@@ -1,18 +1,14 @@
+import aiohttp
 from io import BytesIO
 from traceback import format_exc
-
-import aiohttp
-from pyrogram import Client, filters
 from pyrogram.types import Message
 from Python_ARQ import ARQ
+from pyrogram import Client, filters
+from Userbot.helpers.filters import command
 
-from config import HNDLR
-from Userbot.helpers.merrors import capture_err
-
-ARQ_API_KEY = "QFOTZM-GSZUFY-CHGHRX-TDEHOZ-ARQ"
+ARQ_API_KEY = "BIHMCQ-RKNBRK-HPVADU-BMPNJE-ARQ"
 aiohttpsession = aiohttp.ClientSession()
 arq = ARQ("https://thearq.tech", ARQ_API_KEY, aiohttpsession)
-
 
 async def quotify(messages: list):
     response = await arq.quotly(messages)
