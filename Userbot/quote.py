@@ -4,7 +4,7 @@ from traceback import format_exc
 from pyrogram.types import Message
 from Python_ARQ import ARQ
 from pyrogram import Client, filters
-from Userbot.helpers.filters import command
+from config import HNDLR
 
 ARQ_API_KEY = "BIHMCQ-RKNBRK-HPVADU-BMPNJE-ARQ"
 aiohttpsession = aiohttp.ClientSession()
@@ -35,7 +35,6 @@ def isArgInt(message: Message) -> bool:
 
 
 @Client.on_message(filters.command(["q", "quote"], prefixes=f"{HNDLR}"))
-@capture_err
 async def quotly_func(client, message: Message):
     if not message.reply_to_message:
         return await message.reply_text("Reply To Message To Quote It !")
@@ -52,7 +51,7 @@ async def quotly_func(client, message: Message):
         if arg[0]:
             if arg[1] < 2 or arg[1] > 10:
                 return await m.edit("Argumen harus antara 2-10.")
-            count = arg[1]
+           count = arg[1]
             messages = await client.get_messages(
                 message.chat.id,
                 [
@@ -66,7 +65,7 @@ async def quotly_func(client, message: Message):
             )
         else:
             if getArg(message) != "r":
-                return await m.edit("**SORRY**`")
+                return await m.edit("Incorrect Argument, Pass **'r'** or **'INT'**, **EX:** __/q 2__")
             reply_message = await client.get_messages(
                 message.chat.id,
                 message.reply_to_message.message_id,
